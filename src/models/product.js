@@ -15,7 +15,7 @@ module.exports = (database) => {
         allowNull: false,
         validate: {
           is: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/,
-          len: [3, 100],
+          len: [1, 100],
         },
       },
       quantity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
