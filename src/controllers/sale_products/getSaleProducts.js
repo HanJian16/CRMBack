@@ -9,14 +9,26 @@ module.exports = async ({ id, activityId }) => {
     const allSaleProducts = await Sale_product.findAll({
       where: {
         activityId,
-        include: Product
+        include: [
+          {
+            model: Product,
+          }
+        ]
       },
     });
     return allSaleProducts;
   }
 
   if (id) {
-    const sale_product = await Sale_product.findByPk(id,{include: Product});
+    const sale_product = await Sale_product.findByPk(id,
+      {
+        include: [
+          {
+            model: Product,
+          }
+        ]
+      }
+    );
     return sale_product;
   }
 };
