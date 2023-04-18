@@ -9,13 +9,14 @@ module.exports = async ({ id, activityId }) => {
     const allSaleProducts = await Sale_product.findAll({
       where: {
         activityId,
-        include: [
-          {
-            model: Product,
-          }
-        ]
       },
-    });
+      include: [
+        {
+          model: Product,
+        }
+      ]
+    },
+    );
     return allSaleProducts;
   }
 
