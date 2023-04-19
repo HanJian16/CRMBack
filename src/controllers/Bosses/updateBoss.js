@@ -2,6 +2,7 @@ const { Boss } = require("../../db.js");
 const getBossById = require("./getBossById.js");
 const fs = require("fs");
 const uploadFile = require("../../firebase.js");
+const bcrypt = require("bcrypt");
 
 const updateBoss = async (data, path) => {
   console.log("ESTO ES UPDATE-BOSS", data);
