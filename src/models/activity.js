@@ -21,14 +21,12 @@ module.exports = (database) => {
     from: {
       type: DataTypes.STRING,
       validate: {
-        // is: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/,
         len: [3, 40],
       },
     },
     to: {
       type: DataTypes.STRING,
       validate: {
-        // is: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/,
         len: [3, 40],
       },
     },

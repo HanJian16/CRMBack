@@ -55,7 +55,7 @@ module.exports = (database) => {
         },
       },
       pay_day: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
       },
       logo: {
         type: DataTypes.STRING,
