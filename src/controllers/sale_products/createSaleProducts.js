@@ -18,13 +18,8 @@ module.exports = async (data) => {
     throw new Error(
       `Se excede de la cantidad disponible, (${product.dataValues.quantity}), usted quiere vender (${data.quantity_sale})`
     );
-  if (data["activityId"] && data["productId"]) {
-    //Si el descuento de Product es mayor que cero, entonces al producto vendido le aplicamos el descuento
-    if (product.dataValues.discount > 0) {
-      data["price_sale"] =
-        data.price_sale - data.price_sale * (product.dataValues.discount / 100);
-    }
 
+  if (data["activityId"] && data["productId"]) {    
     const newSaleProduct = await Sale_product.create(data);
 
     let act = (await Activity.findOne({ where: { id: data.activityId } }))
