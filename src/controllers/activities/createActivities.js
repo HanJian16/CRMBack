@@ -17,11 +17,15 @@ module.exports = async (data) => {
 
     const cliente = await getClientById(newActivity.dataValues.clientId);
     //console.log("Este es cliente", cliente);
-    if (data.state === "Concretado") {
-      sendMailFeedback(vendedor, cliente, newActivity.dataValues);
+    try {
+      if (data.state === "Concretado") {
+        sendMailFeedback(vendedor, cliente, newActivity.dataValues);
+      }
+      sendMail(vendedor, cliente, newActivity.dataValues, "creacion");
+    } catch (error) {
+      return error
     }
 
-    sendMail(vendedor, cliente, newActivity.dataValues, "creacion");
     return newActivity;
   } else {
     throw new Error("salesmanId or clientId is undefined");
