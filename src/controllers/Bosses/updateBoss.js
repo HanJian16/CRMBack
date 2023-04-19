@@ -16,7 +16,7 @@ const updateBoss = async (data, path) => {
     delete dataAct.updatedAt;
     console.log("llegó aqui linea 15");
     if (data["password"]) {
-      dataAct.password = bcrypt.hashSync(password, 10);
+      dataAct.password = bcrypt.hashSync(data["password"], 10);
     }
     console.log("llegó aqui linea 19");
     var resultado = await Boss.update(dataAct, {
@@ -32,8 +32,8 @@ const updateBoss = async (data, path) => {
     delete dataAct.updatedAt;
     console.log("llegó aqui linea 29");
     console.log("ESTO ES data-password", data["password"]);
-    if (data["password"]) {
-      dataAct.password = bcrypt.hashSync(password, 10);
+    if (data["password"].length < 25) {
+      dataAct.password = bcrypt.hashSync(data["password"], 10);
     }
     console.log("llegó aqui linea 33");
     var resultado = await Boss.update(dataAct, {
