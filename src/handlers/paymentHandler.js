@@ -82,7 +82,7 @@ const captureOrder = async (req, res) => {
       }
     );
 
-    // console.log(response.data)
+    console.log('Soy el response');
     let fechaRegistro = response.data.purchase_units[0].payments.captures[0].create_time;
     let payDay = new Date(fechaRegistro)
     payDay.setDate(payDay.getDate() + 30);
@@ -92,7 +92,7 @@ const captureOrder = async (req, res) => {
     const data = { id: id, enable: true , pay_day: payDay};
     // const data = { id: id, enable: true};
     const respuesta = await updateBoss(data);
-    // console.log('Soy la respuesta______',respuesta);
+    console.log('Soy la respuesta______',respuesta);
 
     // console.log('Soy el response.data -----------',response.data);
 
@@ -103,12 +103,12 @@ const captureOrder = async (req, res) => {
       ...info,
       ...response.data.purchase_units[0].payments.captures[0],
     };
-    // console.log(bosss);
+    
     sendMail(respuesta, dataPay);
     //ACABO DE PEGAR ESTE CODIGO DE NUEVO (ENVIO DE EMAIL AL REALIZAR LA COMPRA)
     //console.log(response.data.purchase_units[0].payments.captures[0].amount.value)
-
-    res.redirect("https://crm-henry-34b.vercel.app/authentication");
+    console.log('fianlizó');
+    res.redirect("https://crm-henry-34b.vercel.app/success");
   } catch (err) {
     // console.log(err);
     res.status(500).json({ error: err.message });
