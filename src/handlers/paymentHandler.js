@@ -13,7 +13,7 @@ const createOrder = async (req, res) => {
         {
           amount: {
             currency_code: "USD",
-            value: "100.00",
+            value: "99.00",
           },
         },
       ],
@@ -21,8 +21,8 @@ const createOrder = async (req, res) => {
         brand_name: "CRM.com",
         landing_page: "LOGIN",
         user_action: "PAY_NOW",
-        return_url: `https://crm.up.railway.app/api/capture-order?id=${id}`,
-        cancel_url: "https://crm.up.railway.app/api/cancel-order",
+        return_url: `https://crm2.up.railway.app/api/capture-order?id=${id}`,
+        cancel_url: "https://crm2.up.railway.app/api/cancel-order",
       },
     };
 
@@ -82,32 +82,15 @@ const captureOrder = async (req, res) => {
       }
     );
 
-    // console.log(response.data.purchase_units[0].payments.captures[0].create_time)
+    // console.log(response.data)
     let fechaRegistro = response.data.purchase_units[0].payments.captures[0].create_time;
-    let payYear = fechaRegistro.slice(0, 4);
-    let payMonth = fechaRegistro.slice(5, 7);
-    let day = fechaRegistro.slice(8, 10);
-    // console.log('Soy el payMounth',payMonth);
-    // console.log('Soy el payYear',payYear);
-    if(payMonth < 10){
-      let mounth = Number(payMonth) + 1;
-      payMonth = 0 + String(mounth)
-    } else if(payMonth == 12) {
-      let year = Number(payYear) + 1;
-      payYear = String(year);
-      payMonth = '01'
-    } else {
-      let mounth = Number(payMonth) + 1;
-      payMonth = String(mounth);
-    }
-    
-    // console.log('Soy el payMounth',payMonth);
-    // console.log('Soy el payYear',payYear);
+    let payDay = new Date(fechaRegistro)
+    payDay.setDate(payDay.getDate() + 30);
+    // console.log('PAyday',payDay);
 
-    let payDay = `${payYear}-${payMonth}-${day}`
-    // console.log(payDay);
-    // const data = { id: id, enable: true , pay_day: payDay};
-    const data = { id: id, enable: true};
+
+    const data = { id: id, enable: true , pay_day: payDay};
+    // const data = { id: id, enable: true};
     const respuesta = await updateBoss(data);
     // console.log('Soy la respuesta______',respuesta);
 
@@ -141,3 +124,33 @@ module.exports = {
   captureOrder,
   cancelOrder,
 };
+
+
+
+
+
+
+
+
+    // let payYear = fechaRegistro.slice(0, 4);
+    // let payMonth = fechaRegistro.slice(5, 7);
+    // let day = fechaRegistro.slice(8, 10);
+    // console.log('Soy el payMounth',payMonth);
+    // console.log('Soy el payYear',payYear);
+    // if(payMonth < 10){
+    //   let mounth = Number(payMonth) + 1;
+    //   payMonth = 0 + String(mounth)
+    // } else if(payMonth == 12) {
+    //   let year = Number(payYear) + 1;
+    //   payYear = String(year);
+    //   payMonth = '01'
+    // } else {
+    //   let mounth = Number(payMonth) + 1;
+    //   payMonth = String(mounth);
+    // }
+    
+    // console.log('Soy el payMounth',payMonth);
+    // console.log('Soy el payYear',payYear);
+
+    // let payDay = `${payYear}-${payMonth}-${day}`
+    // console.log(payDay);
