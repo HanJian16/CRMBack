@@ -29,11 +29,11 @@ module.exports = async (data) => {
     let salesman = (await Salesman.findOne({ where: { id: act.salesmanId } }))
       .dataValues;
     //Debe recibir (client, salesman, product, sale_product)
-    try {
+  /*   try {
       sendMail(client, salesman, product.dataValues, data);
     } catch (error) {
       return error
-    }
+    } */
 
     //Product ======> (id, name, quantity,cost_price, sale_price, discount)
     await Product.update(

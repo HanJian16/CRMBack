@@ -17,14 +17,14 @@ module.exports = async (data) => {
 
     const cliente = await getClientById(newActivity.dataValues.clientId);
     //console.log("Este es cliente", cliente);
-    try {
+ /*    try {
       if (data.state === "Concretado") {
         sendMailFeedback(vendedor, cliente, newActivity.dataValues);
       }
       sendMail(vendedor, cliente, newActivity.dataValues, "creacion");
     } catch (error) {
       return error
-    }
+    } */
 
     return newActivity;
   } else {
