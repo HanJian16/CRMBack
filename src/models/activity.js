@@ -9,11 +9,13 @@ module.exports = (database) => {
       defaultValue: DataTypes.UUIDV4,
     },
     method: {
-      type: DataTypes.ENUM("Correo-E", "Llamada", "E-mail", "Call"),
+      type: DataTypes.STRING,
+      // type: DataTypes.ENUM("Correo-E", "Llamada", "E-mail", "Call"),
       allowNull: false,
     },
     state: {
-      type: DataTypes.ENUM("Pendiente", "Concretado", "Earring", "Concretized"),
+      type: DataTypes.STRING,
+      // type: DataTypes.ENUM("Pendiente", "Concretado", "Earring", "Concretized"),
       allowNull: false,
     },
     from: {
