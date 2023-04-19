@@ -2,6 +2,7 @@ const { Salesman } = require("../../db.js");
 const getAllSalesman = require("./getAllSalesman.js");
 const fs = require("fs");
 const uploadFile = require("../../firebase.js");
+const bcrypt = require("bcrypt");
 
 module.exports = async (data, path) => {
   console.log("ESTO ES UPDATE-SALESMAN", data);
