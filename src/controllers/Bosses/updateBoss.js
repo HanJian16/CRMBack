@@ -12,10 +12,12 @@ const updateBoss = async (data, path) => {
     const dataAct = { ...data, logo };
     var id = dataAct.id;
     delete dataAct.id;
+    console.log("llegó aqui linea 15");
     if (data["password"]) {
       dataAct.password = bcrypt.hashSync(password, 10);
     }
-    var [resultado] = await Boss.update(dataAct, {
+    console.log("llegó aqui linea 19");
+    var resultado = await Boss.update(dataAct, {
       where: {
         id,
       },
@@ -24,16 +26,18 @@ const updateBoss = async (data, path) => {
     const dataAct = { ...data };
     var id = dataAct.id;
     delete dataAct.id;
+    console.log("llegó aqui linea 29");
     if (data["password"]) {
       dataAct.password = bcrypt.hashSync(password, 10);
     }
+    console.log("llegó aqui linea 33");
     var resultado = await Boss.update(dataAct, {
       where: {
         id,
       },
     });
   }
-
+  console.log(resultado);
   if (resultado) {
     const boss = await getBossById(id);
     return {
