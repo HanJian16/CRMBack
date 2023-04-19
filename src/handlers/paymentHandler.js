@@ -13,7 +13,7 @@ const createOrder = async (req, res) => {
         {
           amount: {
             currency_code: "USD",
-            value: "100.00",
+            value: "99.00",
           },
         },
       ],
@@ -21,8 +21,8 @@ const createOrder = async (req, res) => {
         brand_name: "CRM.com",
         landing_page: "LOGIN",
         user_action: "PAY_NOW",
-        return_url: `https://crm.up.railway.app/api/capture-order?id=${id}`,
-        cancel_url: "https://crm.up.railway.app/api/cancel-order",
+        return_url: `https://crm2.up.railway.app/api/capture-order?id=${id}`,
+        cancel_url: "https://crm2.up.railway.app/api/cancel-order",
       },
     };
 
