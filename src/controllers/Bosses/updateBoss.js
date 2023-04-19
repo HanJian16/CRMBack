@@ -36,6 +36,8 @@ const updateBoss = async (data, path) => {
       dataAct.password = bcrypt.hashSync(data["password"], 10);
     }
     console.log("llegó aqui linea 33");
+    console.log(id);
+    console.log(dataAct);
     var resultado = await Boss.update(dataAct, {
       where: {
         id,
