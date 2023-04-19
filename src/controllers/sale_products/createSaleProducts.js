@@ -9,6 +9,7 @@ const Sequelize = require("sequelize");
 const { sendMail } = require("../email/notifyBuyClient.js");
 
 module.exports = async (data) => {
+  console.log(data);
   //data={ quantity_sale, price_sale, productId, activityId }
   const product = await Product.findOne({ where: { id: data.productId } });
   //HAY QUE HACER product.dataValues.quantity
@@ -17,13 +18,8 @@ module.exports = async (data) => {
     throw new Error(
       `Se excede de la cantidad disponible, (${product.dataValues.quantity}), usted quiere vender (${data.quantity_sale})`
     );
-  if (data["activityId"] && data["productId"]) {
-    //Si el descuento de Product es mayor que cero, entonces al producto vendido le aplicamos el descuento
-    if (product.dataValues.discount > 0) {
-      data["price_sale"] =
-        data.price_sale - data.price_sale * (product.dataValues.discount / 100);
-    }
 
+  if (data["activityId"] && data["productId"]) {
     const newSaleProduct = await Sale_product.create(data);
 
     let act = (await Activity.findOne({ where: { id: data.activityId } }))
@@ -33,8 +29,11 @@ module.exports = async (data) => {
     let salesman = (await Salesman.findOne({ where: { id: act.salesmanId } }))
       .dataValues;
     //Debe recibir (client, salesman, product, sale_product)
-
-    sendMail(client, salesman, product.dataValues, data);
+  /*   try {
+      sendMail(client, salesman, product.dataValues, data);
+    } catch (error) {
+      return error
+    } */
 
     //Product ======> (id, name, quantity,cost_price, sale_price, discount)
     await Product.update(

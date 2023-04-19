@@ -2,6 +2,7 @@ const { where } = require("sequelize");
 const { Product } = require("../../db.js");
 
 module.exports = async ({ bossId }) => {
+  console.log("ESTO ES GETALLPROUDTS", bossId);
   if (!bossId) throw new Error("bossId required");
 
   const products = await Product.findAll({ where: { bossId } });

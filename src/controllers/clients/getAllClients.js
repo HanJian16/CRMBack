@@ -3,6 +3,7 @@ const statusNegotiation = require("./statusNegotiation.js");
 const ctotalPurchased = require("./totalPurchased.js");
 
 module.exports = async ({ salesmanId, bossId }) => {
+  console.log("ESTO ES GETALLCLIENTS", salesmanId + " y " + bossId);
   if (!salesmanId && !bossId) throw new Error("salesmanId or bossId required");
 
   let allClients;
@@ -21,7 +22,6 @@ module.exports = async ({ salesmanId, bossId }) => {
     });
     allClients = allClientsbyboss.map((e) => e.dataValues);
   }
-  console.log("allClients", allClients);
   const resultadoFinal = await Promise.all(
     allClients.map(async (c) => {
       let estado = await statusNegotiation({ id: c.id });
@@ -40,7 +40,6 @@ module.exports = async ({ salesmanId, bossId }) => {
       };
     })
   );
-  console.log(resultadoFinal);
   if (!resultadoFinal) {
     return [];
   }

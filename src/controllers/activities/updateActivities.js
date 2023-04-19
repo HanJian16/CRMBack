@@ -5,6 +5,7 @@ const getClientById = require("../clients/getClientById.js");
 const { sendMail } = require("../email/notifyActivityClient.js");
 
 module.exports = async (data) => {
+  console.log("ESTO ES UPDATEACTIVITIES", data);
   //data={id,method,state,from,to,message,subject,attached,saleman_id,***sale_id}
   const dataAct = { ...data };
   let state = await Activity.findOne({ where: { id: data.id } });

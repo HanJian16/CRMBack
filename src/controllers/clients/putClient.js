@@ -2,6 +2,7 @@ const { Client } = require("../../db.js");
 const getClientById = require("./getClientById.js");
 
 module.exports = async (data) => {
+  console.log("ESTO ES PUTCLIENT", data);
   const dataAct = { ...data };
   const id = dataAct.id;
   delete dataAct.id;

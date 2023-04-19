@@ -1,17 +1,21 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (database) => {
-  database.define("feedback", {
+  database.define("licence", {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
       allowNull: false,
       defaultValue: DataTypes.UUIDV4,
     },
-    score: {
-      // type: DataTypes.ENUM(1, 2, 3, 4, 5),
-      type: DataTypes.INTEGER
+    bossId: {
+      type: DataTypes.STRING,
     },
-    //AGREGAR UN MENSAJE FEEDBACK
+    description: {
+      type: DataTypes.STRING,
+    },
+    due_date: {
+      type: DataTypes.DATE,
+    },
   });
 };

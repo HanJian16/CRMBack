@@ -2,7 +2,7 @@ const { Salesman, Feedback, conn } = require("../../db.js");
 const customSalesman = require("./customSalesman.js");
 
 const getAllSalesman = async (data) => {
-  console.log(data);
+  console.log("ESTO ES GETALLSALESMAN", data);
   const { id, name, address, email, phone, enable, bossId } = data;
   if (id) {
     const salesman = await Salesman.findByPk(id, {
@@ -54,7 +54,6 @@ const getAllSalesman = async (data) => {
       },
     ],
   });
-  console.log("este es conbsole.log() en linea 56 getallSalesman", allSalesman);
   const result = await Promise.all(
     allSalesman.map(async (salesman) => await customSalesman(salesman))
   );

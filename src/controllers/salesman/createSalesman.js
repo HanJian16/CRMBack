@@ -7,8 +7,9 @@ const fs = require("fs");
 const uploadFile = require("../../firebase.js");
 
 const createSalesman = async (data, path) => {
+  console.log("ESTO ES CREATEBENDEDOR", data);
   const { password, bossId } = data;
-  if (password === null) password = "12345";
+  if (password === null || !data.password) data["password"] = "12345";
   if (bossId != null) {
     if (path) {
       const img = fs.readFileSync(path).buffer;

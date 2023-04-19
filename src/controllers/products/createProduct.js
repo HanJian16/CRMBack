@@ -3,6 +3,7 @@ const fs = require("fs");
 const uploadFile = require("../../firebase.js");
 
 module.exports = async (data, path) => {
+  console.log("ESTO ES CREATEPRODUCS", data);
   //data={method,state,from,to,message,subject,attached,clientId,salesmanId,}
   if (data["bossId"] != null) {
     if (path) {

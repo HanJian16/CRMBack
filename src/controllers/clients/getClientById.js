@@ -3,10 +3,10 @@ const statusNegotiation = require("./statusNegotiation.js");
 const ctotalPurchased = require("./totalPurchased.js");
 
 module.exports = async (id) => {
-  const client = await Client.findByPk(id)
-  if (client === null)
-    return client
-    
+  console.log("ESTO ES GETCLIENBYID", id);
+  const client = await Client.findByPk(id);
+  if (client === null) return client;
+
   let estado = await statusNegotiation({ id });
   const { totalPurchased, categories } = await ctotalPurchased({ id });
 
@@ -17,8 +17,7 @@ module.exports = async (id) => {
     ...client.dataValues,
     status: estado.state,
     totalPurchased,
-    categories
+    categories,
   };
   return resultado;
-
 };

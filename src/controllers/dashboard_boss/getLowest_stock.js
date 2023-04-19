@@ -2,6 +2,7 @@ const { Boss, Product } = require("../../db.js");
 const { where, Op } = require("sequelize");
 
 module.exports = async (id) => {
+  console.log(id);
   const allProducts = await Boss.findByPk(id, {
     include: [
       {

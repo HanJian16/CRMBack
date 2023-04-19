@@ -6,6 +6,7 @@ const getClientById = require("../clients/getClientById.js");
 const { where } = require("sequelize");
 
 module.exports = async (data) => {
+  console.log("ESTO ES CREATEACTIVITIES", data);
   //data={method,state,from,to,message,subject,attached,clientId,salesmanId,}
   if (data.salesmanId != null && data.clientId != null) {
     const newActivity = await Activity.create(data);
@@ -16,11 +17,15 @@ module.exports = async (data) => {
 
     const cliente = await getClientById(newActivity.dataValues.clientId);
     //console.log("Este es cliente", cliente);
-    if (data.state === "Concretado") {
-      sendMailFeedback(vendedor, cliente, newActivity.dataValues);
-    }
+ /*    try {
+      if (data.state === "Concretado") {
+        sendMailFeedback(vendedor, cliente, newActivity.dataValues);
+      }
+      sendMail(vendedor, cliente, newActivity.dataValues, "creacion");
+    } catch (error) {
+      return error
+    } */
 
-    sendMail(vendedor, cliente, newActivity.dataValues, "creacion");
     return newActivity;
   } else {
     throw new Error("salesmanId or clientId is undefined");
