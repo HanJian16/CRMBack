@@ -9,7 +9,9 @@ module.exports = (database) => {
       defaultValue: DataTypes.UUIDV4,
     },
     score: {
-      type: DataTypes.INTEGER,
+      // type: DataTypes.ENUM(1, 2, 3, 4, 5),
+      type: DataTypes.INTEGER
     },
+    //AGREGAR UN MENSAJE FEEDBACK
   });
 };
