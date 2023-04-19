@@ -10,7 +10,7 @@ const sequelize = new Sequelize(
   {
     logging: false,
     native: false,
-    force: true,
+    force: false,
   }
 );
 const basename = path.basename(__filename);
@@ -73,9 +73,9 @@ Feedback.belongsTo(Salesman, { foreignKey: 'salesmanId' });
 Task.belongsTo(Client);
 Task.belongsTo(Salesman);
 
-// dbFill(sequelize.models).then(() => {
-//   console.log("Se ha ejecutado llenar en la linea 91 de db.js");
-// });
+dbFill(sequelize.models).then(() => {
+  console.log("Se ha ejecutado llenar en la linea 91 de db.js");
+});
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
