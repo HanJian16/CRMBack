@@ -18,7 +18,7 @@ const sendMail = async (boss, pay) => {
   const transporter = createTrans();
   const info = await transporter.sendMail({
     from: '"Equipo de desarrollo CRM" <pfcrm23@gmail.com>',
-    to: "pfcrm23@gmail.com", //Se supone que es el correo del jefe, es igual que el de PayPal?
+    to: boss.email,
     subject: `Su pago se ha realizado correctamente!`,
     text: `Pago del Servicio CRM`, // plain text body
     html: `<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
