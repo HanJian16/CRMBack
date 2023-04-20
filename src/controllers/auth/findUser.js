@@ -16,7 +16,7 @@ const createToken = (user, role) => {
 };
 
 module.exports = async (data) => {
-  console.log(data);
+  console.log("esto es daaaaaaaaata",data);
   const { email, password, name, nickname } = data;
 
   let salesman = await Salesman.findOne({ where: { email: email } });
