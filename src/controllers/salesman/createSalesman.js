@@ -27,7 +27,7 @@ const createSalesman = async (data, path) => {
     }
     const boss = await getBossById(bossId);
 
-    sendMail(salesman.dataValues, boss);
+    sendMail({...salesman.dataValues, role:'seller'}, boss);
 
     return getAllSalesman({ id: salesman.dataValues.id });
   } else {

@@ -49,9 +49,9 @@ const sendMailFeedback = async (salesman, client, activity) => {
 
         
         <tr>
-          <div style="position: relative; display:flex; justify-content: center; align-items: center; width: 100% ; height: 200px; background:#032a62 ">
-                <img src="https://www.pngmart.com/files/4/Galaxy-PNG-HD.png" alt="" style="width="100%; height:100%;/>
-          </div>
+        <div style="position: relative; display:flex; justify-content: center; align-items: center; width: 100% ; height: 200px; background:#fff ">
+          <img src="https://i.ibb.co/gdmyqMK/logo-Front.png" alt="logo" style="width:50%; height: 80%"/>
+        </div>
         </tr>
 
           <tr>
@@ -66,7 +66,7 @@ const sendMailFeedback = async (salesman, client, activity) => {
                     de muchisima utilidad para ir mejorando aún más.
                 </p>
                 
-                <a href="http://www.google.com">
+                <a href=${`https://crm-henry-34b.vercel.app/feedback/${salesman.id}`}>
                   <div style="margin:auto; width: 300px; height: 50px; background: blue; color: white; display:flex; justify-content: center; align-items: center">
                     <p style="font-weight: bold; font-size: 20px; margin:auto; text-align: center"> DAR VALORACIÓN </p>
                   </div>

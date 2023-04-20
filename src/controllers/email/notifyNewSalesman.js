@@ -18,7 +18,7 @@ const sendMail = async (salesman, boss) => {
   const transporter = createTrans();
   const info = await transporter.sendMail({
     from: '"Equipo de desarrollo CRM" <pfcrm23@gmail.com>',
-    to: boss.email, //Se supone que es el correo del jefe
+    to: salesman.email, 
     subject: `Nuevo Registro de Vendedor!`,
     text: `Cambios en tu plataforma CRM`, // plain text body
     html: `<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -49,25 +49,26 @@ const sendMail = async (salesman, boss) => {
 
         
         <tr>
-          <div style="position: relative; display:flex; justify-content: center; align-items: center; width: 100% ; height: 200px; background:#032a62 ">
-                <img src="https://www.pngmart.com/files/4/Galaxy-PNG-HD.png" alt="" style="width="100%; height:100%;/>
-          </div>
+        <div style="position: relative; display:flex; justify-content: center; align-items: center; width: 100% ; height: 200px; background:#fff ">
+          <img src="https://i.ibb.co/gdmyqMK/logo-Front.png" alt="logo" style="width:50%; height: 80%"/>
+        </div>
         </tr>
 
           <tr>
             <td style="padding:36px 30px 42px 30px;">
                 <p style="font-size: 18px">
-                    <span style="font-size: 28px">Hola!! <i>${boss.name}</i></span>.<br>
+                    <span style="font-size: 28px">Hola!! <i>${salesman.name}</i></span>.<br>
                     <hr>
-                    <span style="font-size: 18px; margin-top: 10px;"> Se ha registrado el vendedor <b>${salesman.name}</b> a tu plataforma, te <b>invitamos</b> a <i>completar el perfil del vendedor</i> que haz añadido a tu empresa.</span>
+                    <span style="font-size: 18px; margin-top: 10px;"> Has sido registrado en nuestro CRM por <b>${boss.name}</b>, te <b>invitamos</b> a <i>completar tu perfil de vendedor</i>. y cambiar <b>tu contraseña dando click al enlace</b></span>
                 </p>
-                <p style="font-size: 18px">
-                    Puedes comunicarte con tu vendedor, para comunicarle los <b>datos de su cuenta</b>, te recordamos que la contraseña viene por <b>default</b> por lo que se <b><i>recomienda</i> que la modifique!</b>
-                </p>
+
                     <ul style="font-size: 20px; border: 1px solid black; border-radius: 10px; padding-top: 20px; padding-bottom: 20px; width: 60%; padding-right: 10px; padding-left: 30px; margin: auto;">
                         <li> <span style="font-weight: bold">Email:</span> ${salesman.email} </li>
-                        <li> <span style="font-weight: bold">Password:</span> ${salesman.password}</li>
+                        <li> <span style="font-weight: bold">Password:</span> 12345</li>
                     </ul>
+
+                    <a href=${`https://crm-henry-34b.vercel.app/changepass/${salesman.role}/${salesman.id}`} style="color:#11F930;text-decoration:none;"><div style="width:80%; display:flex; justify-content:center;align-items:center;height:50px;background:#00002d; color:white; font-weight:bold; font-size:18px; margin:auto"><h3>Ir a la plataforma</h3></div></a>
+                  <hr>
                 <p style="text-align: end; font-size: 20px; margin-right: 40px;">
                     <i><b>Éxitos!</b></I>
                 </p>
