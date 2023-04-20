@@ -17,9 +17,8 @@ const createToken = (user, role) => {
   return { success: true, token };
 };
 
-//console.log()
 const validate = async (value) => {
-  const { pay_day, createdAt } = value;
+  const { pay_day = null, createdAt } = value;
   if (pay_day == null) {
     let endFree = new Date(createdAt);
     // console.log('Soy el createdAt', endFree);
@@ -39,7 +38,6 @@ const validate = async (value) => {
     }
   }
 };
-
 module.exports = async (data) => {
   console.log(data);
   const { email, password, name, nickname } = data;
@@ -81,13 +79,19 @@ module.exports = async (data) => {
     }
   }
 
+  let bossDos = await Boss.findOne({ where: { username: nickname } });
+  if (bossDos !== null) {
+    await validate(bossDos.dataValues);
+    return createToken(bossDos, "admin");
+  }
+
   if (nickname) {
     let boss = await createBoss({
       name,
       username: nickname,
       email,
     });
-    console.log(boss);
+
     await validate(boss.dataValues);
     return createToken(boss, "admin");
   }
