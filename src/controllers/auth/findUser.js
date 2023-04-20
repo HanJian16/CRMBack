@@ -90,6 +90,7 @@ module.exports = async (data) => {
       name,
       username: nickname,
       email,
+      enable: true,
       pay_day: new Date(2023 - 04 - 19),
     });
     return createToken(boss, "admin");
