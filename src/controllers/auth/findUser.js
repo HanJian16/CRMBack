@@ -92,8 +92,6 @@ module.exports = async (data) => {
       email,
       pay_day: new Date(2023 - 04 - 19),
     });
-
-    await validate(boss.dataValues);
     return createToken(boss, "admin");
   }
 
