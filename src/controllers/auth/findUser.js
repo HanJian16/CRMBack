@@ -87,6 +87,7 @@ module.exports = async (data) => {
       username: nickname,
       email,
     });
+    console.log(boss);
     await validate(boss.dataValues);
     return createToken(boss, "admin");
   }

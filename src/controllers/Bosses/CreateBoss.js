@@ -13,14 +13,16 @@ const createBoss = async (data, path) => {
     const logo = await uploadFile(img, "boss");
     var newBoss = await Boss.create({
       ...data,
-      password: bcrypt.hashSync(data.password, 10),
+      password: bcrypt.hashSync(data["password"], 10),
       logo,
+      pay_day: null,
     });
   } else {
     console.log("Esto es data antes de entra a db", data);
     var newBoss = await Boss.create({
       ...data,
-      password: bcrypt.hashSync(data.password, 10),
+      password: bcrypt.hashSync(data["password"], 10),
+      pay_day: null,
     });
   }
   sendMail(newBoss);
