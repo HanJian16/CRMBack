@@ -51,9 +51,9 @@ const sendMail = async (client, salesman, product, sale_product) => {
 
         
         <tr>
-          <div style="position: relative; display:flex; justify-content: center; align-items: center; width: 100% ; height: 200px; background:#032a62 ">
-                <img src="https://www.pngmart.com/files/4/Galaxy-PNG-HD.png" alt="" style="width="100%; height:100%;/>
-          </div>
+        <div style="position: relative; display:flex; justify-content: center; align-items: center; width: 100% ; height: 200px; background:#fff ">
+          <img src="https://i.ibb.co/gdmyqMK/logo-Front.png" alt="logo" style="width:50%; height: 80%"/>
+        </div>
         </tr>
 
           <tr>

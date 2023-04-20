@@ -52,11 +52,11 @@ const sendMail = async (salesman, client, activity, estado) => {
 
         <table role="presentation" style="width:602px;height=400px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
 
-          <tr>
-              <div style="position: relative; display:flex; justify-content: center; align-items: center; width: 100% ; height: 200px; background:#032a62 ">
-                <img src="https://www.pngmart.com/files/4/Galaxy-PNG-HD.png" alt="" style="width="100%; height:100%;/>
-              </div>
-          </tr>
+        <tr>
+        <div style="position: relative; display:flex; justify-content: center; align-items: center; width: 100% ; height: 200px; background:#fff ">
+          <img src="https://i.ibb.co/gdmyqMK/logo-Front.png" alt="logo" style="width:50%; height: 80%"/>
+        </div>
+        </tr>
 
           <tr>
             <td style="padding:36px 30px 42px 30px;">
