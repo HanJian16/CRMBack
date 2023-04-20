@@ -17,6 +17,7 @@ const createToken = (user, role) => {
   return { success: true, token };
 };
 
+//console.log()
 const validate = async (value) => {
   const { pay_day, createdAt } = value;
   if (pay_day == null) {
