@@ -25,12 +25,13 @@ module.exports = async (data) => {
     if (password !== null) {
       if (bcrypt.compareSync(password, salesman.dataValues["password"]))
         if (salesman.dataValues.enable !== false) {
-          const vendedor = getAllSalesman(salesman.dataValues.id);
+          console.log("ESTO ES SALESMAN EN FINDUSER LINEA 28", salesman);
+          const vendedor = await getAllSalesman(salesman.dataValues.id);
+          console.log("ESTO ES VENDEDOR LINEA 30 FINDUSER", vendedor);
           const token = jwt.sign(
             {
               exp: Math.floor(Date.now() / 1000) * 60 * 60 * 24 * 7,
               ...vendedor,
-              role: "seller",
             },
             "secret"
           );
@@ -59,7 +60,6 @@ module.exports = async (data) => {
       username: nickname,
       email,
     });
-    console.log("Este es find user antes de mandar el token", boss);
     return createToken(boss, "admin");
   }
 
