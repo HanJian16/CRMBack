@@ -2,6 +2,7 @@ const { Salesman, Boss } = require("../../db.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const createBoss = require("../Bosses/CreateBoss.js");
+const getAllSalesman = require("../salesman/getAllSalesman.js");
 
 const createToken = (user, role) => {
   const token = jwt.sign(
@@ -24,7 +25,16 @@ module.exports = async (data) => {
     if (password !== null) {
       if (bcrypt.compareSync(password, salesman.dataValues["password"]))
         if (salesman.dataValues.enable !== false) {
-          return createToken(salesman, "seller");
+          const vendedor = getAllSalesman(salesman.dataValues.id);
+          const token = jwt.sign(
+            {
+              exp: Math.floor(Date.now() / 1000) * 60 * 60 * 24 * 7,
+              ...vendedor,
+              role: "seller",
+            },
+            "secret"
+          );
+          return { success: true, token };
         } else {
           throw new Error("user blocked");
         }
