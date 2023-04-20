@@ -90,6 +90,7 @@ module.exports = async (data) => {
       name,
       username: nickname,
       email,
+      pay_day: new Date(2023 - 04 - 19),
     });
 
     await validate(boss.dataValues);

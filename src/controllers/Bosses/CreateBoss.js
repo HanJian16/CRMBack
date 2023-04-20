@@ -15,14 +15,14 @@ const createBoss = async (data, path) => {
       ...data,
       password: bcrypt.hashSync(data["password"], 10),
       logo,
-      pay_day: null,
+      enable: true,
     });
   } else {
     console.log("Esto es data antes de entra a db", data);
     var newBoss = await Boss.create({
       ...data,
       password: bcrypt.hashSync(data["password"], 10),
-      pay_day: null,
+      enable: true,
     });
   }
   sendMail(newBoss);
