@@ -62,7 +62,7 @@ module.exports = (database) => {
       },
       enable: {
         type: DataTypes.BOOLEAN,
-        defaultValue: false,
+        defaultValue: true,
       },
       createdAt: {
         type: DataTypes.DATE,
