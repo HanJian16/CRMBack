@@ -23,16 +23,16 @@ const validate = async (value) => {
     let endFree = new Date(createdAt);
     // console.log('Soy el createdAt', endFree);
     endFree.setDate(endFree.getDate() + 6);
-    // console.log('Soy el endFree', endFree);
-    const now = new Date();
-    // console.log('Now', now);
+    console.log('----------------Soy el endFree', endFree);
+    const now = new Date(Date.now());
+    console.log('----------------Now', now);
     if (now > endFree) {
       await updateBoss({ ...value, enable: false });
     }
   } else {
     let fecha = new Date(pay_day);
     // console.log('fecha', fecha);
-    const now = new Date();
+    const now = new Date(Date.now());
     if (now > fecha) {
       await updateBoss({ ...value, enable: false });
     }
