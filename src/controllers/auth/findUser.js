@@ -31,8 +31,9 @@ const validate = async (value) => {
     }
   } else {
     let fecha = new Date(pay_day);
-    // console.log('fecha', fecha);
+    console.log('+++++++++++++++fecha', fecha);
     const now = new Date(Date.now());
+    console.log('+++++++++++++++Now', now);
     if (now > fecha) {
       await updateBoss({ ...value, enable: false });
     }
@@ -91,7 +92,7 @@ module.exports = async (data) => {
       username: nickname,
       email,
       enable: true,
-      pay_day: new Date(Date.now())
+      pay_day: new Date(Date.now() + 604800000)
     });
     return createToken(boss, "admin");
   }
